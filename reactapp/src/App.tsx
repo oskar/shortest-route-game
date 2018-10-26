@@ -8,7 +8,6 @@ type AppState = {
 
 export class App extends React.Component {
   state: AppState = {
-    // grid: Array(30).fill(0).map(x => Array(20).fill(0))
     level: simple
   };
 
@@ -21,6 +20,8 @@ export class App extends React.Component {
     this.setState({
       grid
     });
+
+    console.log(JSON.stringify(grid));
   };
 
   public render() {
