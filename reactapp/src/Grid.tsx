@@ -16,10 +16,7 @@ export class Grid extends React.Component<GridProps> {
     const xSize = window.innerWidth / grid[0].length;
     const size = Math.min(xSize, ySize);
 
-    const pfGrid = new PF.Grid(grid) as any;
-    pfGrid.setWeightAt(9, 21, 2);
-    pfGrid.setWeightAt(10, 21, 2);
-
+    const pfGrid = new PF.Grid(grid);
     const finder = new PF.AStarFinder({
       diagonalMovement: PF.DiagonalMovement.IfAtMostOneObstacle
     });
@@ -29,7 +26,7 @@ export class Grid extends React.Component<GridProps> {
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
-        offset={{ x: size / 2, y: size / 2 }}
+        offset={{ x: -size / 2, y: -size / 2 }}
       >
         <Layer>
           {grid.map((row, y) =>
@@ -61,18 +58,6 @@ export class Grid extends React.Component<GridProps> {
             listening={false}
           />
 
-          {/* {path.map(([x, y]) => {
-            return (
-              <Rect
-                key={`${x}${y}`}
-                x={x * size}
-                y={y * size}
-                width={size}
-                height={size}
-                fill={"green"}
-              />
-            );
-          })} */}
         </Layer>
         <Layer>
           <Circle
